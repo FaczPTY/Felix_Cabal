@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio de Felix Caballero - Estudiante de Ciberseguridad en UTP con asignaciones del curso de programación" />
+  <meta name="keywords" content="Felix Caballero, UTP, Ciberseguridad, Portafolio, Asignaciones, Programación" />
+  <meta name="author" content="Felix Caballero" />
+  <title>Felix Caballero | Portafolio</title>
+  <link rel="icon" type="image/x-icon" href="src/png/main-favicon.png" />
+  <meta property="og:title" content="Felix Caballero | Portafolio" />
+  <meta property="og:description" content="Estudiante de Ciberseguridad — proyectos, asignaciones y certificados." />
+  <meta property="og:image" content="src/png/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tu-dominio-o-github-pages/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Orbitron&family=Fira+Code&family=Six+Caps" />
+
+  <style>
+    /* Estilos para prevenir la selección de texto e imágenes */
+    * {
+      -webkit-user-select: none;  /* Chrome, Safari, Opera */
+      -moz-user-select: none;     /* Firefox */
+      -ms-user-select: none;      /* Internet Explorer/Edge */
+      user-select: none;          /* Non-prefixed version, currently supported by Chrome and Opera */
+    }
+    
+    img {
+      -webkit-user-drag: none;    /* Prevenir arrastre de imágenes en WebKit */
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: none;       /* Prevenir eventos de puntero en imágenes */
+    }
+    
+    /* Excepciones para campos de entrada y áreas de texto */
+    input, textarea {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+
+    :root {
+      --primary-color: #00722e;
+      --primary-light: #009e42;
+      --accent-color: #7a1c79;
+      --accent-light: #9a2599;
+      --secondary-color: #2d2d2d;
+      --text-color: #f0f0f0;
+      --background-color: #1a1a1a;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --muted-color: #bfbfbf;
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --max-width: 1200px;
+    }
+    
+    .light-mode {
+      --primary-color: #00722e;
+      --primary-light: #009e42;
+      --accent-color: #7a1c79;
+      --accent-light: #9a2599;
+      --secondary-color: #f5f5f5;
+      --text-color: #333333;
+      --background-color: #ffffff;
+      --card-bg: rgba(0, 0, 0, 0.03);
+      --card-border: rgba(0, 0, 0, 0.1);
+      --muted-color: #333;
+      --glass-bg: rgba(0, 0, 0, 0.03);
+      --glass-border: rgba(0, 0, 0, 0.1);
+    }
+    
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: 'Fira Code', monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      transition: background-color 0.5s, color 0.5s;
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(0, 114, 46, 0.12), transparent),
+                  radial-gradient(800px 400px at 90% 80%, rgba(122, 28, 121, 0.08), transparent),
+                  var(--background-color);
+    }
+    
+    #progressContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      z-index: 9999;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    }
+    
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      transition: width 0.1s linear;
+    }
+    
+    .cursor-inner, .cursor-outer {
+      position: fixed;
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    
+    .cursor-inner {
+      width: 8px;
+      height: 8px;
+      background: var(--primary-color);
+      transition: transform 0.15s ease;
+    }
+    
+    .cursor-outer {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--primary-color);
+      transition: all 0.15s ease;
+    }
+    
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: var(--max-width);
+      z-index: 1000;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      margin-top: 18px;
+    }
+    
+    .light-mode .navbar {
+      background: rgba(245, 245, 245, 0.8);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo img {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      transition: transform .35s;
+      border: 1px solid var(--glass-border);
+    }
+    
+    .logo:hover img {
+      transform: rotate(-6deg) scale(1.05);
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.6));
+    }
+    
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .logo-name {
+      font-weight: 700;
+    }
+    
+    .logo-subtitle {
+      font-size: 12px;
+      color: var(--muted-color);
+    }
+    
+    .navbar-tabs ul {
+      display: flex;
+      list-style: none;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    
+    .navbar-tabs a {
+      color: var(--muted-color);
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all .18s;
+    }
+    
+    .navbar-tabs a:hover {
+      color: var(--primary-color);
+      background: rgba(255,255,255,0.02);
+      transform: translateY(-2px);
+    }
+    
+    .hamburger {
+      display: none;
+    }
+    
+    .landing {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .blob {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      left: 8%;
+      top: 10%;
+      background: radial-gradient(circle at 30% 20%, rgba(0, 114, 46, 0.26), transparent 40%),
+                  radial-gradient(circle at 70% 80%, rgba(122, 28, 121, 0.12), transparent 40%);
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+      animation: float 14s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-25px) rotate(10deg); }
+    }
+
+    .hero {
+      z-index: 2;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    .hero-left {
+      text-align: left;
+    }
+    
+    .greeting {
+      font-size: 20px;
+      color: var(--muted-color);
+      margin: 0 0 8px;
+    }
+    
+    .name {
+      font-size: 42px;
+      margin: 0;
+      color: var(--primary-color);
+      letter-spacing: 2px;
+    }
+    
+    .role {
+      margin-top: 10px;
+      font-size: 18px;
+      color: var(--muted-color);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .typing {
+      font-weight: 700;
+      color: var(--accent-color);
+      min-width: 220px;
+    }
+
+    .hero-right {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .avatar {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .cta-row {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      transition: transform .18s, box-shadow .18s;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font-family: 'Fira Code', monospace;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 114, 46, 0.22);
+    }
+    
+    .section-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-heading h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+    }
+    
+    .about-section, .assignments-section, .certificates-section, .contact-section, .game-section {
+      padding: 100px 10%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    
+    .info-dp-section {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 28px;
+      align-items: center;
+    }
+    
+    .about-info {
+      text-align: left;
+    }
+    
+    .about-info p {
+      color: var(--muted-color);
+      line-height: 1.6;
+    }
+    
+    .dp {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .dp img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--glass-border);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+    }
+    
+    .social-btn {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+      background: transparent;
+      color: var(--muted-color);
+      text-decoration: none;
+      transition: transform .15s;
+      font-size: 14px;
+    }
+    
+    .social-btn:hover {
+      transform: translateY(-3px);
+      color: var(--primary-color);
+      background: rgba(255,255,255,0.02);
+    }
+    
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    
+    .tag {
+      background: rgba(255,255,255,0.03);
+      padding: 6px 8px;
+      font-size: 12px;
+      border-radius: 999px;
+      color: var(--muted-color);
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+    
+    .assignments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .assignment-card {
+      background: var(--glass-bg);
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(8px);
+    }
+    
+    .assignment-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      border-color: var(--primary-color);
+    }
+    
+    .assignment-card h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+    
+    .assignment-card p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+      flex-grow: 1;
+      color: var(--muted-color);
+    }
+    
+    .assignment-thumbnail {
+      width: 100%;
+      height: 200px;
+      background-color: var(--secondary-color);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .assignment-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .assignment-card:hover .assignment-thumbnail img {
+      transform: scale(1.05);
+    }
+    
+    .assignment-thumbnail .pdf-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+    }
+    
+    .assignment-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    .view-btn {
+      background: transparent;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: 'Fira Code', monospace;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .view-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .cert-card {
+      background: var(--glass-bg);
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(8px);
+    }
+    
+    .cert-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      border-color: var(--primary-color);
+    }
+    
+    .cert-thumbnail {
+      width: 100%;
+      height = 200px;
+      background-color: var(--secondary-color);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .cert-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .cert-card:hover .cert-thumbnail img {
+      transform: scale(1.05);
+    }
+    
+    .cert-thumbnail .cert-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+    }
+    
+    .cert-card h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+    
+    .cert-card p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+      flex-grow: 1;
+      color: var(--muted-color);
+    }
+    
+    .cert-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    .contact-grid {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 280px;
+    }
+    
+    .contact-form {
+      min-width: 320px;
+      max-width: 480px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+    }
+    
+    .contact-form input, .contact-form textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.04);
+      background: transparent;
+      color: inherit;
+      font-family: 'Fira Code', monospace;
+    }
+    
+    .game-section {
+      padding: 100px 10%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .game-container {
+      background: var(--glass-bg);
+      border-radius: 15px;
+      padding: 30px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(8px);
+      text-align: center;
+    }
+
+    .game-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.05);
+      padding: 15px 25px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      min-width: 100px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .stat small {
+      color: var(--muted-color);
+      font-size: 0.9rem;
+    }
+
+    .game-area {
+      position: relative;
+      height: 400px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      border: 2px dashed var(--glass-border);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .game-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .bug {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      animation: floatBug 3s ease-in-out infinite;
+      border: 2px solid transparent;
+    }
+
+    .bug:hover {
+      transform: scale(1.1);
+      border-color: var(--primary-color);
+    }
+
+    .bug::before {
+      content: "</>";
+      color: white;
+      font-weight: bold;
+    }
+
+    @keyframes floatBug {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .bug-caught {
+      animation: caught 0.5s ease-out forwards;
+    }
+
+    @keyframes caught {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    .game-over {
+      background: rgba(122, 28, 121, 0.3);
+      border-color: var(--accent-color);
+    }
+
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particleFloat 1s ease-out forwards;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+    }
+    
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 50px 10% 20px;
+      text-align: center;
+      margin-top: 100px;
+      transition: background-color 0.5s;
+    }
+    
+    .light-mode footer {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .light-mode .footer-bottom {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .floating-controls {
+      position: fixed;
+      right: 20px;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1001;
+    }
+    
+    .round-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, var(--primary-color), var(--primary-light));
+      color: white;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .round-btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(180deg, var(--primary-light), var(--primary-color));
+    }
+    
+    #musicPanel {
+      position: fixed;
+      right: 80px;
+      top: 100px;
+      z-index: 999;
+      display: none;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    
+    #musicPanel > div:first-child {
+      font-size: 13px;
+      color: var(--muted-color);
+      margin-bottom: 8px;
+    }
+    
+    #musicPanel > div:last-child {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+    }
+    
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s, visibility 0.5s;
+      flex-direction: column;
+    }
+    
+    .loader-wrap {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .loader {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 6px solid rgba(255,255,255,0.06);
+      border-top-color: var(--primary-color);
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loader-typing {
+      font-size: 18px;
+      color: var(--muted-color);
+      letter-spacing: 1px;
+      margin-top: 10px;
+      min-height: 26px;
+    }
+    
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ripple span {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      opacity: 0.6;
+      animation: ripple .6s linear;
+      background: rgba(255,255,255,0.25);
+    }
+    
+    @keyframes ripple {
+      to { transform: scale(4); opacity: 0; }
+    }
+    
+    #backToTop {
+      position: fixed;
+      right: 20px;
+      bottom: 28px;
+      z-index: 1000;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: linear-gradient(180deg, var(--primary-color), var(--primary-light));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      transform: scale(.98);
+      transition: transform .12s, opacity .2s;
+      opacity: 0;
+      pointer-events: none;
+      cursor: pointer;
+    }
+    
+    #backToTop.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+    
+    @media (max-width: 980px) {
+      .info-dp-section {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-left {
+        text-align: center;
+      }
+      
+      .navbar-tabs ul {
+        display: none;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .dp {
+        width: 80%;
+        margin: 0 auto;
+      }
+      
+      .floating-controls {
+        top: 80px;
+        right: 10px;
+      }
+      
+      #musicPanel {
+        right: 60px;
+      }
+      
+      .contact-grid {
+        flex-direction: column;
+      }
+      
+      .contact-form {
+        min-width: 100%;
+      }
+      
+      .game-stats {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .stat {
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+
+<body class="body">
+  <div id="progressContainer"><div id="progressBar"></div></div>
+  
+  <audio loop id="audioPlayer" style="display: none"></audio>
+  
+  <div id="musicPanel" style="display: none">
+    <div>Selecciona música</div>
+    <div>
+      <button class="social-btn" data-src="src/mp3/Musicpkm.mp3">Música 1</button>
+      <button class="social-btn" data-src="src/mp3/SlateportCityPokémonRubySapphireEmerald Soundtrack.mp3">Música 2</button>
+      <button class="social-btn" data-src="src/mp3/EliteFourBattle-PokémonRubySapphireEmerald Soundtrack.mp3">Música 3</button>
+    </div>
+  </div>
+  
+  <div id="preloader">
+    <div class="loader-wrap">
+      <div class="loader"></div>
+      <div class="loader-typing" id="loaderTyping">Cargando portafolio...</div>
+    </div>
+  </div>
+
+  <div class="cursor-inner" id="cursor-inner"></div>
+  <div class="cursor-outer" id="cursor-outer"></div>
+
+  <div class="floating-controls">
+    <button id="themeToggle" class="round-btn" title="Cambiar tema" aria-label="Cambiar tema">
+      <i class="fa fa-adjust"></i>
+    </button>
+    <button id="musicToggle" class="round-btn" title="Control de música" aria-label="Control de música">
+      <i class="fa fa-music"></i>
+    </button>
+  </div>
+
+  <header>
+    <div class="navbar" id="navbar">
+      <div class="logo" tabindex="0">
+        <img src="src/png/nav-avatar.png" alt="avatar" id="nav-avatar"/>
+        <div class="logo-text">
+          <div class="logo-name">Felix Caballero</div>
+          <div class="logo-subtitle">Estudiante · Ciberseguridad</div>
+        </div>
+      </div>
+      
+      <div class="navbar-tabs" id="navbar-tabs">
+        <ul class="navbar-tabs-ul">
+          <li class="navbar-tabs-li home activeThistab" data-aos="fade-down" data-aos-delay="100">
+            <a href="#home" tabindex="0" aria-label="Inicio">
+              &#60;/Inicio&#62;
+            </a>
+          </li>
+
+          <li class="navbar-tabs-li about" data-aos="fade-down" data-aos-delay="300">
+            <a href="#about" aria-label="Sobre mí">
+              &#60;/SobreMí&#62;
+            </a>
+          </li>
+
+          <li class="navbar-tabs-li assignments" data-aos="fade-down" data-aos-delay="500">
+            <a href="#assignments" aria-label="Asignaciones">
+              &#60;/Asignaciones&#62;
+            </a>
+          </li>
+          
+          <li class="navbar-tabs-li certificates" data-aos="fade-down" data-aos-delay="700">
+            <a href="#certificates" aria-label="Certificados">
+              &#60;/Certificados&#62;
+            </a>
+          </li>
+          
+          <li class="navbar-tabs-li game" data-aos="fade-down" data-aos-delay="900">
+            <a href="#game" aria-label="Juego" id="gameLink">
+              &#60;/Juego&#62;
+            </a>
+          </li>
+          
+          <li class="navbar-tabs-li contact" data-aos="fade-down" data-aos-delay="1100">
+            <a href="#contact" aria-label="Contacto">
+              &#60;/Contacto&#62;
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <button class="hamburger round-btn" id="hamburger" aria-label="Abrir menu" title="Menu">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="landing" role="region" aria-label="Inicio">
+      <div class="blob" aria-hidden="true"></div>
+      <div class="hero" role="article" aria-label="Introducción">
+        <div class="hero-left" data-aos="fade-right">
+          <p class="greeting">¡Hola! Soy</p>
+          <h1 class="name">Félix Caballero</h1>
+          <div class="role">
+            <div>Me encanta </div>
+            <div class="typing" id="typingText">Ciberseguridad</div>
+          </div>
+
+          <div class="cta-row" style="margin-top:18px">
+            <a class="btn ripple" href="#assignments"><i class="fa fa-folder-open"></i> Ver asignaciones</a>
+            <a class="btn ripple" href="#contact" style="background:transparent; border:1px solid rgba(255,255,255,0.06)"><i class="fa fa-envelope"></i> Contactar</a>
+          </div>
+
+          <div style="margin-top:18px; color:var(--muted-color); font-size:13px;">
+            <span style="display:inline-block; margin-right:12px"><i class="fa fa-map-marker-alt"></i> David-Panamá</span>
+            <span style="display:inline-block"><i class="fa fa-graduation-cap"></i> UTP - Ciberseguridad</span>
+          </div>
+        </div>
+
+        <div class="hero-right" data-aos="fade-left">
+          <img src="src/webp/FelixCabal.webp" alt="Foto de Felix" class="avatar" />
+          <div style="display:flex; justify-content:space-between; margin-top:12px; align-items:center;">
+            <div style="font-size:13px; color:var(--muted-color)">Descarga CV</div>
+            <div>
+              <a href="src/pdf/CV Félix Caballero.pdf" class="social-btn" target="_blank"><i class="fa fa-download"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about" data-aos="fade-up">
+      <div class="section-heading">
+        <h2 class="section-heading-article" tabindex="0" aria-label="Sobre mí">
+          &#60;/SobreMí&#62;
+        </h2>
+      </div>
+
+      <div class="info-dp-section">
+        <div class="about-info">
+          <p tabindex="0">
+            Mi nombre completo es Félix Caballero y tengo 20 años.
+            Entre mis hobbies están los videojuegos, el diseño gráfico en plataformas como Canva, así como la fotografía y las actividades al aire libre.
+            También formo parte del Grupo Scout 87 San Antonio de Padua, lo que me ha permitido desarrollar valores, habilidades prácticas y experiencias en contacto con la naturaleza.
+          </p>
+          <br />
+          <p tabindex="0">
+            Actualmente soy estudiante del primer año de la carrera de Licenciatura en Ciberseguridad en la Universidad Tecnológica de Panamá UTP, 
+            dentro de la Facultad de Ingeniería de Sistemas Computacionales.
+          </p>
+          <br />
+          <p tabindex="0">
+            En un futuro deseo ser un profesional en el área de Ciberseguridad, contribuyendo al diseño de estrategias que fortalezcan la protección de sistemas informáticos y la gestión de riesgos en entornos digitales. 
+            Mi meta es llegar a formar parte de una empresa internacional de gran prestigio, como Threat Fabric, donde pueda aplicar mis conocimientos en un ambiente innovador y retador.
+          </p>
+          
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Redes</span>
+            <span class="tag">Ciberseguridad</span>
+            <span class="tag">Scout</span>
+          </div>
+        </div>
+
+        <div class="dp" data-aos="fade-up">
+          <img src="src/webp/Felix_CaballeroICON.webp" alt="Felix Caballero" tabindex="0" aria-label="Foto de Felix Caballero" />
+          <div class="social-links">
+            <a class="social-btn" href="mailto:faczpty@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+            <a class="social-btn" href="https://instagram.com/gato_felix.27" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="assignments-section" id="assignments">
+      <div class="section-heading" data-aos="fade-up">
+        <h2 class="section-heading-article" tabindex="0" aria-label="Mis asignaciones">
+          &#60;/Asignaciones&#62;
+        </h2>
+      </div>
+      
+      <div class="assignments-grid">
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/INVESTIGACIÓN 1.png" alt="Vista previa Investigación 1">
+          </div>
+          <h3>Investigación 1</h3>
+          <p>Investigacion que introducen a la programacion orientada a objeto y las clases en JAVA.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">POO</span>
+              <span class="tag">Investigación</span>
+            </div>
+            <a href="src/pdf/CHECK- Investigacion 1.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/Ejercicio Práctico1 1.png" alt="Vista previa Ejercicio Práctico 1">
+          </div>
+          <h3>Ejercicio Práctico 1</h3>
+          <p>Ejercicio donde se estaran desarrolando problemas planteados a JAVA.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">Ejercicio</span>
+              <span class="tag">Resolución</span>
+            </div>
+            <a href="src/pdf/Ejercicio Práctico1 1.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/Examen Parcial1__.png" alt="Vista previa Examen Parcial 1">
+          </div>
+          <h3>Examen Parcial 1</h3>
+          <p>Desarrollo de problemas de JAVA y tambien el armado de un packet tracer, Todo en tiempo reloj.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">Examen</span>
+              <span class="tag">Packet Tracer</span>
+            </div>
+            <a href="src/pdf/Examen Parcial 1.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/Examen Parcial2__.png" alt="Vista previa Examen Parcial 2">
+          </div>
+          <h3>Examen Parcial 2</h3>
+          <p>Armado de un prototipo funcional para una empresa llamada NIBARRA.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">Examen</span>
+              <span class="tag">Prototipo</span>
+            </div>
+            <a href="src/pdf/Examen Parcial2.1.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/INVESTIGACIÓN 2__.png" alt="Vista previa Investigación 2">
+          </div>
+          <h3>Investigación 2</h3>
+          <p>Investigacion profunda en ver cual IDE es mejor NETBEANS VS ECLIPSE orientado a JAVA.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">IDE</span>
+              <span class="tag">Investigación</span>
+            </div>
+            <a href="src/pdf/Investigación 2.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/LABORATORIO PRÁCTICO I__.png" alt="Vista previa Laboratorio 1">
+          </div>
+          <h3>Laboratorio 1</h3>
+          <p>Manual paso a paso de como instalar JAVA en windows y tambien como compilar.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">Laboratorio</span>
+              <span class="tag">Instalación</span>
+            </div>
+            <a href="src/pdf/LABORATORIO 1.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="700">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/Laboratorio Práctico2__.png" alt="Vista previa Laboratorio 2">
+          </div>
+          <h3>Laboratorio 2</h3>
+          <p>Desarrollo de problemas de JAVA y prototipos funcionales.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">Laboratorio</span>
+              <span class="tag">Prototipo</span>
+            </div>
+            <a href="src/pdf/Laboratorio 2.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="800">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/Taller Práctico1__.png" alt="Vista previa Taller Práctico 1">
+          </div>
+          <h3>Taller Práctico 1</h3>
+          <p>Se muestra como instalar MySQL Server y el funcionamiento de un prototipo simple.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">MySQL</span>
+              <span class="tag">Taller</span>
+              <span class="tag">Base de datos</span>
+            </div>
+            <a href="src/pdf/Taller Práctico1.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+        
+        <div class="assignment-card" data-aos="fade-up" data-aos-delay="900">
+          <div class="assignment-thumbnail">
+            <img src="src/img/assignments/Taller Práctico3__.png" alt="Vista previa Taller Práctico 3">
+          </div>
+          <h3>Taller Práctico 3</h3>
+          <p>Armado de un prototipo funcional para una empresa llamada MARIA PAN.</p>
+          <div class="assignment-meta">
+            <div class="tags">
+              <span class="tag">JAVA</span>
+              <span class="tag">Taller</span>
+              <span class="tag">Prototipo</span>
+            </div>
+            <a href="src/pdf/Taller Práctico3.pdf" target="_blank" class="view-btn">
+              Ver PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="certificates-section" id="certificates" data-aos="fade-up" aria-label="Certificados">
+      <div class="section-heading">
+        <h2 class="section-heading-article" tabindex="0" aria-label="Certificados">
+          &#60;/Certificados&#62;
+        </h2>
+      </div>
+
+      <div class="certs-grid">
+        <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="cert-thumbnail">
+            <img src="src/img/certificate/jotajoti2023.png" alt="Certificado Scout">
+          </div>
+          <h3>JOTA JOTI 2023</h3>
+          <p>Evento anual del Movimiento Scout que combinó la conexión a través de la radio (Jamboree en el Aire - JOTA) y por internet (Jamboree en Internet - JOTI).</p>
+          <div class="cert-meta">
+            <div class="tags">
+              <span class="tag">Scout</span>
+              <span class="tag">Liderazgo</span>
+              <span class="tag">2023</span>
+            </div>
+            <a href="src/pdf/jota-joti-2023certificate.pdf" target="_blank" class="view-btn">
+              Ver Certificado
+            </a>
+          </div>
+        </div>
+        
+        <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="cert-thumbnail">
+            <img src="src/img/certificate/jotajoti2024.png" alt="Certificado Scout">
+          </div>
+          <h3>JOTA JOTI 2024</h3>
+          <p>Evento en el que une a scouts de más de 176 países a través de tecnologías de radio e internet.</p>
+          <div class="cert-meta">
+            <div class="tags">
+              <span class="tag">Scout</span>
+              <span class="tag">Tecnología</span>
+              <span class="tag">2024</span>
+            </div>
+            <a href="src/pdf/jota-joti2024-certificate.pdf" target="_blank" class="view-btn">
+              Ver Certificado
+            </a>
+          </div>
+        </div>
+        
+        <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="cert-thumbnail">
+            <img src="src/img/certificate/savefrom.png" alt="Fundamentos de Ciberseguridad">
+          </div>
+          <h3>Safe from Harm Essential Learnings</h3>
+          <p>Curso de capacitación para voluntarios y miembros del movimiento Scout que enseña las bases para proteger a los jóvenes y adultos de daños.</p>
+          <div class="cert-meta">
+            <div class="tags">
+              <span class="tag">Scout</span>
+              <span class="tag">Seguridad</span>
+              <span class="tag">2024</span>
+            </div>
+            <a href="src/pdf/cybersecurity-certificate.pdf" target="_blank" class="view-btn">
+              Ver Certificado
+            </a>
+          </div>
+        </div>
+        
+        <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="cert-thumbnail">
+            <img src="src/img/certificate/gestión y certificación de Playas.png" alt="Fundamentos de Redes">
+          </div>
+          <h3>Gestión y Certificación de Playas</h3>
+          <p>Certificado a técnicos y gestores para mejorar la calidad, salud y sostenibilidad de las zonas costeras a través de métodos integrales, incluyendo evaluaciones de calidad.</p>
+          <div class="cert-meta">
+            <div class="tags">
+              <span class="tag">Medio Ambiente</span>
+              <span class="tag">Gestión</span>
+              <span class="tag">Sostenibilidad</span>
+            </div>
+            <a href="src/pdf/Centro Internacional de Formación en gestión y certificación de Playas.pdf" target="_blank" class="view-btn">
+              Ver Certificado
+            </a>
+          </div>
+        </div>
+        
+        <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="cert-thumbnail">
+            <img src="src/img/certificate/equipo de protocolo.png" alt="Gestión de Bases de Datos">
+          </div>
+          <h3>Equipo de Protocolo</h3>
+          <p>Curso sobre búsqueda sistemática de nuevas tecnologías, tendencias y oportunidades para obtener una ventaja competitiva.</p>
+          <div class="cert-meta">
+            <div class="tags">
+              <span class="tag">Protocolo</span>
+              <span class="tag">Innovación</span>
+              <span class="tag">Estrategia</span>
+            </div>
+            <a href="src/pdf/Equipo de Protocolo.pdf" target="_blank" class="view-btn">
+              Ver Certificado
+            </a>
+          </div>
+        </div>
+        
+        <div class="cert-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="cert-thumbnail">
+            <img src="src/img/certificate/english benniger.png" alt="Linux Essentials">
+          </div>
+          <h3>English Benniger</h3>
+          <p>Curso introductorio de inglés donde se aprenden las bases del idioma, incluyendo vocabulario esencial, gramática básica, expresiones comunes y habilidades fundamentales de lectura, escritura y conversación.</p>
+          <div class="cert-meta">
+            <div class="tags">
+              <span class="tag">Inglés</span>
+              <span class="tag">Idiomas</span>
+              <span class="tag">Educación</span>
+            </div>
+            <a href="src/pdf/ENGLISH - BEGINNER.pdf" target="_blank" class="view-btn">
+              Ver Certificado
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="game-section" id="game" data-aos="fade-up" aria-label="Juego de Ciberseguridad">
+      <div class="section-heading">
+        <h2 class="section-heading-article" tabindex="0">
+          &#60;/CapturaElBug&#62;
+        </h2>
+        <p style="color: var(--muted-color); margin-top: 10px;">
+          Juego interactivo - Demuestra tus reflejos capturando bugs de código
+        </p>
+      </div>
+
+      <div class="game-container" data-aos="zoom-in">
+        <div class="game-stats">
+          <div class="stat">
+            <span id="score">0</span>
+            <small>Puntos</small>
+          </div>
+          <div class="stat">
+            <span id="time">30</span>
+            <small>Segundos</small>
+          </div>
+          <div class="stat">
+            <span id="bugs-caught">0</span>
+            <small>Capturados</small>
+          </div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+          <div class="game-message" id="gameMessage">
+            <h3>¡Captura el Bug!</h3>
+            <p>Haz clic en los bugs de código antes de que desaparezcan</p>
+            <button class="btn ripple" id="startGame">Comenzar Juego</button>
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <button class="btn" id="resetGame" style="background: var(--accent-color)">
+            <i class="fas fa-redo"></i> Reiniciar
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="contact-section" id="contact" data-aos="fade-up" aria-label="Contacto">
+      <div class="section-heading">
+        <h2 class="section-heading-article" tabindex="0" aria-label="Contacto">
+          &#60;/Contacto&#62;
+        </h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p style="color:var(--muted-color)">¿Te interesa colaborar o hablar de algun proyecto? Escríbeme y con gusto hablamos.</p>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+            <a class="social-btn" href="mailto:faczpty@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+            <a class="social-btn" href="tel:+507-6504-7121"><i class="fa fa-phone"></i> Teléfono</a>
+            <a class="social-btn" href="https://instagram.com/gato_felix.27" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          </div>
+        </div>
+
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xwpdpzwl" method="POST">
+          <input name="name" required placeholder="Tu nombre" />
+          <input name="email" type="email" required placeholder="Correo" />
+          <textarea name="message" rows="4" required placeholder="Mensaje"></textarea>
+          <button type="submit" class="btn ripple" style="align-self:flex-end;">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <article>
+        Diseñado y desarrollado por Felix Caballero
+        &#169; 2025
+      </article>
+    </div>
+  </footer>
+  
+  <button id="backToTop" aria-label="Subir al inicio"><i class="fa fa-chevron-up"></i></button>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    
+    const headerHeight = 86;
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const targetId = a.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if(target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+    
+    const preloader = document.getElementById('preloader');
+    const loaderTyping = document.getElementById('loaderTyping');
+    const loadingPhrases = [
+      "Preparando portafolio...",
+      "Cargando asignaciones...",
+      "Afinando animaciones...",
+      "Listo en segundos..."
+    ];
+    let lidx = 0;
+    function cycleLoaderText() {
+      loaderTyping.textContent = loadingPhrases[lidx % loadingPhrases.length];
+      lidx++;
+    }
+    let loaderInterval = setInterval(cycleLoaderText, 900);
+
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        clearInterval(loaderInterval);
+      }, 1000);
+    });
+    
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (scrolled / height) * 100;
+      progressBar.style.width = pct + '%';
+    });
+    
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 400) {
+        backBtn.classList.add('show');
+      } else {
+        backBtn.classList.remove('show');
+      }
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => {
+      const nav = document.querySelector('.navbar-tabs ul');
+      if(nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+      }
+    });
+    
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('light-mode');
+      
+      if(document.body.classList.contains('light-mode')) {
+        localStorage.setItem('theme','light');
+      } else {
+        localStorage.removeItem('theme');
+      }
+    });
+    
+    if(localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-mode');
+    }
+    
+    document.querySelectorAll('.ripple').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const span = document.createElement('span');
+        const size = Math.max(rect.width, rect.height) * 1.2;
+        span.style.width = span.style.height = size + 'px';
+        span.style.left = (e.clientX - rect.left - size/2) + 'px';
+        span.style.top = (e.clientY - rect.top - size/2) + 'px';
+        this.appendChild(span);
+        setTimeout(() => span.remove(), 600);
+      });
+    });
+    
+    const musicToggle = document.getElementById('musicToggle');
+    const musicPanel = document.getElementById('musicPanel');
+    const audioPlayer = document.getElementById('audioPlayer');
+    let audioPlaying = false;
+    
+    musicToggle.addEventListener('click', () => {
+      musicPanel.style.display = musicPanel.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    document.querySelectorAll('#musicPanel .social-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const src = btn.dataset.src;
+        audioPlayer.src = src;
+        audioPlayer.play().then(() => {
+          audioPlaying = true;
+          musicToggle.innerHTML = '<i class="fa fa-pause"></i>';
+        }).catch(err => {
+          console.warn("Autoplay bloqueado por el navegador. El usuario debe interactuar para reproducir.");
+          alert("Para reproducir audio, permite reproducción multimedia o haz clic en el control de música nuevamente.");
+        });
+      });
+    });
+    
+    musicToggle.addEventListener('dblclick', () => {
+      if(!audioPlayer.src) return;
+      if(audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+    });
+    
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(contactForm);
+      
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          alert("¡Gracias! Tu mensaje fue enviado correctamente. Te responderé pronto.");
+          contactForm.reset();
+        } else {
+          alert("Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.");
+        }
+      }).catch(error => {
+        alert("Hubo un error de conexión. Por favor, inténtalo de nuevo más tarde.");
+      });
+    });
+    
+    const cursorInner = document.getElementById("cursor-inner");
+    const cursorOuter = document.getElementById("cursor-outer");
+    const links = document.querySelectorAll("a,button");
+
+    document.addEventListener("mousemove", function (e) {
+      const posX = e.clientX;
+      const posY = e.clientY;
+
+      cursorInner.style.left = `${posX}px`;
+      cursorInner.style.top = `${posY}px`;
+
+      cursorOuter.animate(
+        {
+          left: `${posX}px`,
+          top: `${posY}px`,
+        },
+        { duration: 500, fill: "forwards" }
+      );
+
+      links.forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+          cursorInner.classList.add("hover");
+          cursorOuter.classList.add("hover");
+        });
+        link.addEventListener("mouseleave", () => {
+          cursorInner.classList.remove("hover");
+          cursorOuter.classList.remove("hover");
+        });
+      });
+    });
+    
+    const typingEl = document.getElementById('typingText');
+    const words = ["la Ciberseguridad", "ser Scout", "ser autodidacta", "la programación", "sacar fotografías"];
+    let wI = 0, cI = 0, deleting = false;
+    let typingSpeed = 100;
+    let deletingSpeed = 50;
+    let pauseTime = 1500;
+    
+    function typeLoop() {
+      const word = words[wI % words.length];
+      
+      if (!deleting && cI <= word.length) {
+        typingEl.textContent = word.slice(0, cI);
+        cI++;
+        setTimeout(typeLoop, typingSpeed);
+      } else if (deleting && cI >= 0) {
+        typingEl.textContent = word.slice(0, cI);
+        cI--;
+        setTimeout(typeLoop, deletingSpeed);
+      } else {
+        deleting = !deleting;
+        if (!deleting) {
+          wI = (wI + 1) % words.length;
+        }
+        setTimeout(typeLoop, pauseTime);
+      }
+    }
+    
+    setTimeout(typeLoop, 1000);
+    
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 't') themeToggle.click();
+    });
+    
+    document.addEventListener('keydown', function(e) {
+      if(e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+    
+    const navAvatar = document.getElementById('nav-avatar');
+    navAvatar.addEventListener('mouseenter', () => navAvatar.style.transform = 'scale(1.06) rotate(-4deg)');
+    navAvatar.addEventListener('mouseleave', () => navAvatar.style.transform = 'none');
+    
+    class BugGame {
+      constructor() {
+        this.score = 0;
+        this.timeLeft = 30;
+        this.bugsCaught = 0;
+        this.gameActive = false;
+        this.timer = null;
+        this.bugInterval = null;
+        
+        this.gameArea = document.getElementById('gameArea');
+        this.scoreElement = document.getElementById('score');
+        this.timeElement = document.getElementById('time');
+        this.bugsCaughtElement = document.getElementById('bugs-caught');
+        this.gameMessage = document.getElementById('gameMessage');
+        this.startButton = document.getElementById('startGame');
+        this.resetButton = document.getElementById('resetGame');
+        
+        this.init();
+      }
+      
+      init() {
+        this.startButton.addEventListener('click', () => this.startGame());
+        this.resetButton.addEventListener('click', () => this.resetGame());
+      }
+      
+      startGame() {
+        this.gameActive = true;
+        this.score = 0;
+        this.timeLeft = 30;
+        this.bugsCaught = 0;
+        
+        this.updateDisplay();
+        this.gameMessage.style.display = 'none';
+        this.gameArea.classList.remove('game-over');
+        
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.src = "src/mp3/EliteFourBattle-PokémonRubySapphireEmerald Soundtrack.mp3";
+        audioPlayer.play().catch(e => console.log("Error al reproducir audio:", e));
+        
+        this.timer = setInterval(() => {
+          this.timeLeft--;
+          this.updateDisplay();
+          
+          if (this.timeLeft <= 0) {
+            this.endGame();
+          }
+        }, 1000);
+        
+        this.bugInterval = setInterval(() => {
+          if (this.gameActive) {
+            this.createBug();
+          }
+        }, 800);
+      }
+      
+      createBug() {
+        const bug = document.createElement('div');
+        bug.className = 'bug';
+        
+        const x = Math.random() * (this.gameArea.offsetWidth - 80);
+        const y = Math.random() * (this.gameArea.offsetHeight - 80);
+        
+        bug.style.left = `${x}px`;
+        bug.style.top = `${y}px`;
+        
+        const lifeTime = 2000 + Math.random() * 2000;
+        
+        bug.addEventListener('click', () => this.catchBug(bug));
+        
+        this.gameArea.appendChild(bug);
+        
+        setTimeout(() => {
+          if (bug.parentNode) {
+            bug.remove();
+          }
+        }, lifeTime);
+      }
+      
+      catchBug(bug) {
+        if (!this.gameActive) return;
+        
+        bug.classList.add('bug-caught');
+        this.createParticles(bug);
+        
+        const points = 10 + Math.floor(Math.random() * 15);
+        this.score += points;
+        this.bugsCaught++;
+        
+        this.updateDisplay();
+        
+        setTimeout(() => {
+          bug.remove();
+        }, 500);
+      }
+      
+      createParticles(bug) {
+        const rect = bug.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        for (let i = 0; i < 8; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          const angle = (i / 8) * Math.PI * 2;
+          const distance = 50 + Math.random() * 50;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
+          
+          particle.style.setProperty('--tx', `${tx}px`);
+          particle.style.setProperty('--ty', `${ty}px`);
+          particle.style.left = `${centerX}px`;
+          particle.style.top = `${centerY}px`;
+          
+          document.body.appendChild(particle);
+          
+          setTimeout(() => {
+            particle.remove();
+          }, 1000);
+        }
+      }
+      
+      updateDisplay() {
+        this.scoreElement.textContent = this.score;
+        this.timeElement.textContent = this.timeLeft;
+        this.bugsCaughtElement.textContent = this.bugsCaught;
+      }
+      
+      endGame() {
+        this.gameActive = false;
+        clearInterval(this.timer);
+        clearInterval(this.bugInterval);
+        
+        // Detener la música cuando termina el juego
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+        
+        this.gameMessage.innerHTML = `
+          <h3>¡Tiempo Terminado!</h3>
+          <p>Puntuación Final: <strong>${this.score}</strong></p>
+          <p>Bugs Capturados: <strong>${this.bugsCaught}</strong></p>
+          <button class="btn ripple" id="playAgain">Jugar Nuevamente</button>
+        `;
+        this.gameMessage.style.display = 'block';
+        this.gameArea.classList.add('game-over');
+        
+        document.querySelectorAll('.bug').forEach(bug => bug.remove());
+        
+        setTimeout(() => {
+          document.getElementById('playAgain').addEventListener('click', () => this.startGame());
+        }, 100);
+      }
+      
+      resetGame() {
+        this.gameActive = false;
+        clearInterval(this.timer);
+        clearInterval(this.bugInterval);
+        
+        // Detener la música cuando se reinicia el juego
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+        
+        this.gameMessage.innerHTML = `
+          <h3>¡Captura el Bug!</h3>
+          <p>Haz clic en los bugs de código antes de que desaparezcan</p>
+          <button class="btn ripple" id="startGame">Comenzar Juego</button>
+        `;
+        this.gameMessage.style.display = 'block';
+        this.gameArea.classList.remove('game-over');
+        
+        document.querySelectorAll('.bug').forEach(bug => bug.remove());
+        
+        this.score = 0;
+        this.timeLeft = 30;
+        this.bugsCaught = 0;
+        this.updateDisplay();
+        
+        setTimeout(() => {
+          document.getElementById('startGame').addEventListener('click', () => this.startGame());
+        }, 100);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new BugGame();
+    });
+    
+    console.log(`%c
+╔══════════════════════════════╗
+║    PORTFOLIO FÉLIX CABALLERO ║
+║                              ║
+║  Comandos disponibles:       ║
+║  - theme('light'|'dark')     ║
+║  - music('play'|'pause')     ║
+║  - startGame()               ║
+║  - secret()                  ║
+╚══════════════════════════════╝
+`, 'color: #00722e; font-family: "Fira Code", monospace;');
+
+    window.theme = (mode) => {
+      if (mode === 'light') {
+        document.body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light');
+      } else if (mode === 'dark') {
+        document.body.classList.remove('light-mode');
+        localStorage.removeItem('theme');
+      }
+      console.log(`Modo ${mode} activado`);
+    };
+
+    window.music = (action) => {
+      const audioPlayer = document.getElementById('audioPlayer');
+      if (action === 'play' && audioPlayer.src) {
+        audioPlayer.play();
+        console.log('Música reproducida');
+      } else if (action === 'pause') {
+        audioPlayer.pause();
+        console.log('Música pausada');
+      }
+    };
+
+    window.startGame = () => {
+      document.getElementById('gameLink').click();
+      setTimeout(() => {
+        document.getElementById('startGame')?.click();
+      }, 500);
+    };
+
+    window.secret = () => {
+      document.body.style.animation = 'rainbow 3s infinite';
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes rainbow {
+          0% { filter: hue-rotate(0deg); }
+          100% { filter: hue-rotate(360deg); }
+        }
+      `;
+      document.head.appendChild(style);
+      console.log('¡Easter egg activado! Eres un verdadero hacker 🎮');
+      
+      setTimeout(() => {
+        document.body.style.animation = '';
+        style.remove();
+      }, 3000);
+    };
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Félix Caballero",
+    "url":"https://tu-dominio-o-github-pages/",
+    "sameAs":[
+      "https://instagram.com/gato_felix.27"
+    ],
+    "jobTitle":"Estudiante de Ciberseguridad",
+    "worksFor":{
+      "@type":"CollegeOrUniversity",
+      "name":"Universidad Tecnológica de Panamá"
+    },
+    "email": "faczpty@gmail.com"
+  }
+  </script>
+</body>
+</html>
